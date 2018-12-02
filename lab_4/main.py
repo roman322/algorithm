@@ -1,6 +1,3 @@
-import math
-
-
 class Graph:
     def __init__(self):
         self.point = []
@@ -9,9 +6,7 @@ class Graph:
         return True
     else:
         return False
-
 graph = Graph()
-
 values = open('values.txt', 'r')
 readable_values = values.readlines()
 for line in readable_values:
@@ -37,24 +32,19 @@ for line in readable_values:
 
     def get_point(self):
         return self.point
-		
-
     def add_verticle(self, new_verticle):
         self.point.append(new_verticle)
-
     def dfs(self, current, visited):
         for i in current.connection:
             if not visited.get(i):
                 self.dfs(i, visited)
                 visited[i] = True
-
         if not current.connection:
             current.salary = 1
         else:
             for i in current.connection:
                 current.salary += i.salary
 	 def add_edge(self, vertex1, vertex2):
-
         counter = 0
         for i in self.point:
             if i.vertex == vertex1.vertex:
@@ -69,13 +59,10 @@ for line in readable_values:
             counter += 1
         vertex1.connection.append(vertex2)
         self.point.append(vertex1)
-        self.point.append(vertex2)
-		
+        self.point.append(vertex2)		
     def topological_sort(self):
         visited = {vertex: False for vertex in self.point}
         for i in visited:
             if not visited[i]:
                 self.dfs(i, visited)
                 visited[i] = True
-		
-
