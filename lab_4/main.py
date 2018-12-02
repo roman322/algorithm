@@ -24,7 +24,7 @@ for line in readable_values:
                 if char == "Y":
                     graph.add_edge(point(manager), poitn(managers[counter]))
                 counter += 1
-    graph.topological_sort()
+    graph.point_sort()
     summ = 0
     for verticle in graph.get_point():
         summ += verticle.salary
