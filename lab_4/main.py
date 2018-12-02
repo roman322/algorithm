@@ -14,15 +14,15 @@ for line in readable_values:
         print("wrong input")
         break
     else:
-        worker_len = int(math.sqrt(len(line)))
-        workers = [line[i:i + worker_len] for i in range(0, len(line), worker_len)]
-        for worker in workers:
-            graph.add_verticle(Vertex(worker))
-        for worker in workers:
+        manager_len = int(math.sqrt(len(line)))
+        managers = [line[i:i + managers_len] for i in range(0, len(line), managers_len)]
+        for managers in managers:
+            graph.add_verticle(point(managers))
+        for managers in managers:
             counter = 0
-            for char in worker:
+            for char in manager:
                 if char == "Y":
-                    graph.add_edge(Vertex(worker), Vertex(workers[counter]))
+                    graph.add_edge(point(manager), poitn(managers[counter]))
                 counter += 1
     graph.topological_sort()
     summ = 0
@@ -44,24 +44,24 @@ for line in readable_values:
         else:
             for i in current.connection:
                 current.salary += i.salary
-	 def add_edge(self, vertex1, vertex2):
+	 def add_edge(self, point1, point2):
         counter = 0
         for i in self.point:
-            if i.vertex == vertex1.vertex:
-                vertex1 = self.point.pop(counter)
+            if i.point == point1.point:
+                point1 = self.point.pop(counter)
                 break
             counter += 1
         counter = 0
         for i in self.point:
-            if i.vertex == vertex2.vertex:
-                vertex2 = self.point.pop(counter)
+            if i.point == point2.point:
+                point2 = self.point.pop(counter)
                 break
             counter += 1
-        vertex1.connection.append(vertex2)
-        self.point.append(vertex1)
-        self.point.append(vertex2)		
-    def topological_sort(self):
-        visited = {vertex: False for vertex in self.point}
+        point1.connection.append(point2)
+        self.point.append(point1)
+        self.point.append(point2)		
+    def point_sort(self):
+        visited = {point: False for point in self.point}
         for i in visited:
             if not visited[i]:
                 self.dfs(i, visited)
